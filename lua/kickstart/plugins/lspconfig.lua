@@ -224,6 +224,7 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'vtsls', -- VSCode to nvim javascript/typescript lsp wrapper
+        'prettier',
         'prettierd',
         'tailwindcss-language-server',
         'unocss-language-server',
