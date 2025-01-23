@@ -1,10 +1,10 @@
 return {
   {
-    'folke/tokyonight.nvim',
+    'rebelot/kanagawa.nvim',
+    lazy = false,
     priority = 1000,
     init = function()
-      vim.cmd.colorscheme 'tokyonight-night'
-      vim.cmd.hi 'Comment gui=none'
+      vim.cmd.colorscheme 'kanagawa'
     end,
   },
 }
