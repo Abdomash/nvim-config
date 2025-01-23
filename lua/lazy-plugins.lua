@@ -14,7 +14,7 @@ require('lazy').setup({
 
   require 'kickstart/plugins/cmp',
 
-  require 'kickstart/plugins/kanagawa',
+  require 'kickstart/plugins/color',
 
   require 'kickstart/plugins/todo-comments',
 
