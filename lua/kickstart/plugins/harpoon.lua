@@ -20,6 +20,9 @@ return {
       vim.keymap.set('n', '<C-l>', function()
         harpoon:list():select(3)
       end, { desc = 'Select harpoon list 3' })
+      vim.keymap.set('n', '<C-h>', function()
+        harpoon:list():select(4)
+      end, { desc = 'Select harpoon list 4' })
     end,
   },
 }
