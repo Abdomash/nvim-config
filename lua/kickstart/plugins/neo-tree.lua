@@ -14,7 +14,6 @@ return {
   cmd = 'Neotree',
   keys = {
     { '\\', ':Neotree reveal right<CR>', desc = 'NeoTree reveal', silent = true },
-    -- Open in a new tab
     {
       '<leader>pv',
       ':Neotree reveal position=current<CR>',
