@@ -1,11 +1,11 @@
 return {
-  'loctvl842/monokai-pro.nvim',
+  'rebelot/kanagawa.nvim',
   {
-    'rebelot/kanagawa.nvim',
+    'Skardyy/makurai-nvim',
     lazy = false,
     priority = 1000,
     init = function()
-      vim.cmd.colorscheme 'kanagawa'
+      vim.cmd.colorscheme 'makurai'
     end,
   },
 }
