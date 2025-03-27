@@ -11,4 +11,28 @@ config.bidi_enabled = true
 config.font = wezterm.font_with_fallback({ "Liga SFMono Nerd Font", "Vazir Code Hack" })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
+config.keys = {
+  -- Rebind CMD-Left, CMD-Right as ALT-b, ALT-f respectively to match Terminal.app behavior
+  {
+    key = 'LeftArrow',
+    mods = 'CMD',
+    action = wezterm.action.SendKey { key = 'b', mods = 'ALT', },
+  },
+  {
+    key = 'RightArrow',
+    mods = 'CMD',
+    action = wezterm.action.SendKey { key = 'f', mods = 'ALT' },
+  },
+  {
+    key = 'LeftArrow',
+    mods = 'OPT',
+    action = wezterm.action.SendKey { key = 'b', mods = 'ALT', },
+  },
+  {
+    key = 'RightArrow',
+    mods = 'OPT',
+    action = wezterm.action.SendKey { key = 'f', mods = 'ALT' },
+  },
+}
+
 return config
