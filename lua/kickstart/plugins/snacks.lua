@@ -2,33 +2,27 @@ return {
   'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
-  opts = {
-    bigfile = { enabled = true },
-    -- dashboard = { enabled = true },
-    explorer = {
-      enabled = true,
-      replace_netrw = false,
-    },
-    indent = { enabled = true },
-    -- input = { enabled = true },
-    lazygit = { enabled = true },
-    -- picker = { enabled = true },
-    -- notifier = { enabled = true },
-    quickfile = { enabled = true },
-    -- scope = { enabled = true },
-    -- scroll = { enabled = true },
-    -- statuscolumn = { enabled = true },
-    words = { enabled = true },
-  },
   config = function()
     local snacks = require 'snacks'
+    snacks.setup {
+      bigfile = { enabled = true },
+      explorer = {
+        enabled = true,
+        replace_netrw = true,
+      },
+      indent = { enabled = true },
+      lazygit = { enabled = true },
+      quickfile = { enabled = true },
+      words = { enabled = true },
+    }
+
     local nmap = function(keys, func, desc)
       vim.keymap.set('n', keys, func, { desc = desc })
     end
 
     nmap('<leader>pv', function()
       snacks.explorer.open {
-        layout = 'top',
+        layout = { preset = 'select', fullscreen = true },
         auto_close = true,
       }
     end, 'Snacks Explorer')

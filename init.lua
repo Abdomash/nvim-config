@@ -26,7 +26,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
-vim.diagnostic.config { virtual_lines = true }
+vim.diagnostic.config { virtual_lines = { current_line = true } }
 
 -- [[ Basic Keymaps ]]
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights on search' })
@@ -66,25 +66,16 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
 require('lazy').setup({
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  require 'misc',
   require 'kickstart/plugins/harpoon',
   require 'kickstart/plugins/gitsigns',
-  require 'kickstart/plugins/which-key',
-  -- require 'kickstart/plugins/telescope',
   require 'kickstart/plugins/lspconfig',
   require 'kickstart/plugins/conform',
   require 'kickstart/plugins/cmp',
-  require 'kickstart/plugins/color',
-  require 'kickstart/plugins/todo-comments',
   require 'kickstart/plugins/mini',
   require 'kickstart/plugins/treesitter',
   require 'kickstart/plugins/lint',
   require 'kickstart/plugins/autopairs',
-  -- require 'kickstart/plugins/neo-tree',
-  -- require 'kickstart/plugins/indent_line',
-  require 'kickstart/plugins/copilot',
-  require 'kickstart/plugins/ts-comments',
-  require 'kickstart/plugins/tmux-navigator',
   require 'kickstart/plugins/snacks',
 }, {
   ui = {
