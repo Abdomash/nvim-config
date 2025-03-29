@@ -29,6 +29,11 @@ sudo apt update
 sudo apt install make gcc ripgrep unzip git xclip neovim
 ```
 
+### Build from Source
+```sh
+bash scripts/install.sh
+```
+
 ### Install Config
 
 #### Install Neovim config
