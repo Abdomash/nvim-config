@@ -42,6 +42,7 @@ return {
     nmap('<leader>sd', snacks.picker.diagnostics, '[S]earch [D]iagnostics')
     nmap('<leader>s.', snacks.picker.recent, '[S]earch Recent Files')
     nmap('<leader><leader>', snacks.picker.buffers, '[ ] Find existing buffers')
-    nmap('<leader>hg', snacks.lazygit.open, '[O]pen [G]it')
+    nmap('<leader>hg', snacks.lazygit.open, 'git Open Lazy[G]it')
+    nmap('<leader>hl', snacks.lazygit.log, 'git Open LazyGit [L]ogs')
   end,
 }
