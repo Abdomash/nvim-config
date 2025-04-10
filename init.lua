@@ -81,10 +81,10 @@ require('lazy').setup {
 
   -- Aesthetics
   {
-    'rebelot/kanagawa.nvim',
+    'Skardyy/makurai-nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'kanagawa'
+      vim.cmd.colorscheme 'makurai'
     end,
   },
   {
