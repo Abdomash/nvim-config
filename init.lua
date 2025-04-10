@@ -87,6 +87,9 @@ require('lazy').setup {
     lazy = false,
     priority = 1000,
     config = function()
+      local custom_colors = { bg = '#0a0a0a', cursor = '#1e1e1e', surface = '#1e1e1e' }
+      require('makurai').modify('makurai', custom_colors)
+      require('makurai').modify('makurai_less', custom_colors)
       vim.cmd.colorscheme 'makurai'
     end,
   },
