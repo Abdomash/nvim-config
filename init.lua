@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd('UiEnter', {
   callback = function()
     local stats = vim.loop.fs_stat(vim.api.nvim_buf_get_name(0))
     if stats and stats.type == 'directory' then
-      vim.cmd 'Neotree toggle position=current'
+      vim.cmd('Neotree toggle position=current dir=' .. vim.api.nvim_buf_get_name(0))
     end
   end,
 })
@@ -80,8 +80,11 @@ require('lazy').setup {
   'tpope/vim-sleuth', -- detect tabstop and shiftwidth automatically
 
   -- Aesthetics
+  { 'Mofiqul/vscode.nvim' },
+  { 'rebelot/kanagawa.nvim' },
   {
     'Skardyy/makurai-nvim',
+    lazy = false,
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'makurai'
@@ -328,6 +331,7 @@ require('lazy').setup {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'lsp: ' .. desc })
           end
           map('grn', vim.lsp.buf.rename, '[r]e[n]ame')
+          map('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')
           map('gra', vim.lsp.buf.code_action, '[g]oto code [a]ction', { 'n', 'x' })
           map('grr', require('telescope.builtin').lsp_references, '[g]oto [r]eferences')
           map('gri', require('telescope.builtin').lsp_implementations, '[g]oto [i]mplementation')
@@ -364,40 +368,30 @@ require('lazy').setup {
       })
 
       -- Diagnostic Config
-      local og_virt_text
-      local og_virt_line
-      vim.api.nvim_create_autocmd({ 'CursorMoved', 'DiagnosticChanged' }, {
-        group = vim.api.nvim_create_augroup('diagnostic_only_virtlines', {}),
-        callback = function()
-          if og_virt_line == nil then
-            og_virt_line = vim.diagnostic.config().virtual_lines
-          end
+      local use_text_mode = true
+      local function toggle_diagnostic_display()
+        if use_text_mode then
+          use_text_mode = false
+          vim.diagnostic.config {
+            virtual_text = false,
+            virtual_lines = { current_line = true },
+          }
+        else
+          use_text_mode = true
+          vim.diagnostic.config {
+            virtual_text = true,
+            virtual_lines = false,
+          }
+        end
+      end
 
-          -- ignore if virtual_lines.current_line is disabled
-          if not (og_virt_line and og_virt_line.current_line) then
-            if og_virt_text then
-              vim.diagnostic.config { virtual_text = og_virt_text }
-              og_virt_text = nil
-            end
-            return
-          end
-
-          if og_virt_text == nil then
-            og_virt_text = vim.diagnostic.config().virtual_text
-          end
-
-          local lnum = vim.api.nvim_win_get_cursor(0)[1] - 1
-
-          if vim.tbl_isempty(vim.diagnostic.get(0, { lnum = lnum })) then
-            vim.diagnostic.config { virtual_text = og_virt_text }
-          else
-            vim.diagnostic.config { virtual_text = false }
-          end
-        end,
+      vim.keymap.set('n', '<leader>q', toggle_diagnostic_display, {
+        desc = 'Toggle between diagnostic virtual text and virtual lines',
       })
+
       vim.diagnostic.config {
         virtual_text = true,
-        virtual_lines = { current_line = true },
+        virtual_lines = false,
         underline = true,
         update_in_insert = false,
       }
@@ -551,6 +545,7 @@ require('lazy').setup {
       require('mini.surround').setup()
       local statusline = require 'mini.statusline'
       statusline.setup { use_icons = vim.g.have_nerd_font }
+      ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function()
         return '%2l:%-2v'
       end
