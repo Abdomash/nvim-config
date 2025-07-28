@@ -87,10 +87,7 @@ require('lazy').setup {
     lazy = false,
     priority = 1000,
     config = function()
-      local custom_colors = { bg = '#0a0a0a', cursor = '#1e1e1e', surface = '#1e1e1e' }
-      require('makurai').modify('makurai', custom_colors)
-      require('makurai').modify('makurai_less', custom_colors)
-      vim.cmd.colorscheme 'makurai'
+      vim.cmd.colorscheme 'makurai_dark'
     end,
   },
   {
@@ -559,7 +556,7 @@ require('lazy').setup {
     build = ':tsupdate',
     main = 'nvim-treesitter.configs',
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'javascript', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'javascript', 'lua', 'luadoc', 'json', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
       auto_install = true,
       highlight = {
         enable = true,
