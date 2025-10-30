@@ -1,6 +1,6 @@
 # Abdomash Neovim Config
 
-This is my neovim configuration values alongside other useful terminal utilities.
+This is my neovim configuration files alongside other useful terminal utilities.
 
 *Inspired by [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).*
 
