@@ -14,7 +14,7 @@ This is my neovim configuration file (`init.lua`) alongside other useful termina
 
 ```bash
 sudo apt update
-sudo apt install make gcc ripgrep unzip git xclip cmake
+sudo apt install make gcc ripgrep unzip git xclip cmake ninja-build gettext curl build-essential
 git clone git@github.com:abdomash/nvim-config.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 cp "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim/.tmux.conf ~/.tmux.conf
 cp "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim/wezterm.lua ~/.wezterm.lua

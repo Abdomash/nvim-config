@@ -445,7 +445,7 @@ require('lazy').setup {
     dependencies = {
       {
         'l3mon4d3/luasnip',
-        version = '2.*',
+        version = 'v2.*',
         build = (function()
           if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
             return
